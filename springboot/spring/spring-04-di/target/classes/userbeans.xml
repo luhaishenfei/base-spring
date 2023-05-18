@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--    p、c命名空间需要导入约束如下 -->
+    <!--    xmlns:p="http://www.springframework.org/schema/p"-->
+    <!--    xmlns:c="http://www.springframework.org/schema/c"-->
+
+    <!--    p命名空间注入，可以直接注入属性的值-->
+    <bean id="user" class="com.lsgf.pojo.User" p:name="zhw" p:age="18"/>
+
+
+    <!--    需要在User类添加构造函数-->
+    <!--    c命名空间注入,通过构造器注入:construct-args-->
+    <bean id="user2" class="com.lsgf.pojo.User" c:age="18" c:name="zhw"/>
+
+<!--    bean的作用域-->
+<!--    1.单列模式 默认-->
+    <bean id="user3" class="com.lsgf.pojo.User" c:age="18" c:name="zhw" scope="singleton"/>
+
+<!--    2.原型模式-->
+    <bean id="user4" class="com.lsgf.pojo.User" c:age="18" c:name="zhw" scope="prototype"/>
+
+</beans>

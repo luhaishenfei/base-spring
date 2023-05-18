@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="gbk" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    
+    <!-- ??????????? user??passworl????? -->
+    <!--    <properties resource="db.properties"/>-->
+    
+    <!-- ??????????? db.properties?п??????username??password user??passworl??? -->
+    <properties resource="db.properties">
+        <property name="u" value="root"/>
+        <!-- ???????? ???????????????? -->
+        <property name="password" value="wrongpsd"/>
+    </properties>
+
+
+
+    <settings>
+<!--        ?????????-->
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+
+<!--        LOG4J -->
+<!--        <setting name="logImpl" value="LOG4J"/>-->
+    </settings>
+
+    <typeAliases>
+<!--        ??????-->
+<!--        <typeAlias type="com.lsgf.pojo.User" alias="User"/>-->
+        <package name="com.lsgf.pojo"/>
+    </typeAliases>
+
+    <environments default="driver2">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url"
+                          value="jdbc:mysql://localhost:3306/testdb?useSSL=false&amp;autoReconnect=true&amp;failOverReadOnly=false&amp;useUnicode=true&amp;characterEncoding=UTF-8"/>
+                <property name="username" value="root"/>
+                <property name="password" value="123"/>
+            </dataSource>
+        </environment>
+
+        <environment id="test">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url"
+                          value="jdbc:mysql://localhost:3306/testdb?useSSL=false&amp;autoReconnect=true&amp;failOverReadOnly=false&amp;useUnicode=true&amp;characterEncoding=UTF-8"/>
+                <property name="username" value="root"/>
+                <property name="password" value="123"/>
+            </dataSource>
+        </environment>
+
+        <environment id="driver">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+
+        <environment id="driver2">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${u}"/>
+                <property name="password" value="${password}"/>
+
+            </dataSource>
+        </environment>
+    </environments>
+
+<!--    ????-->
+    <mappers>
+        <mapper resource="com/lsgf/dao/TeacherMapper.xml"/>
+        <mapper resource="com/lsgf/dao/StudentMapper.xml"/>
+    </mappers>
+</configuration>

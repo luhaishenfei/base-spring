@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="student" class="com.lsgf.pojo.Student">
+        <!--        第一种，普通值注入，value-->
+        <property name="name" value="zhw"/>
+        <!--        第二种,Bean注入,ref-->
+        <property name="address" ref="address"/>
+        <!--        第三种,数组注入-->
+        <property name="books">
+            <array>
+                <value>小王子</value>
+                <value>1984</value>
+                <value>金瓶梅</value>
+            </array>
+        </property>
+        <!--        第四种,List注入-->
+        <property name="hobbys">
+            <list>
+                <value>篮球</value>
+                <value>吉他</value>
+                <value>健身</value>
+                <value>游戏</value>
+                <value>coding</value>
+            </list>
+        </property>
+        <!--        第五种,Map注入-->
+        <property name="card">
+            <map>
+                <entry key="工商银行" value="0"/>
+                <entry key="长沙银行" value="0.1"/>
+                <entry key="建设银行" value="4939"/>
+                <entry key="身份证" value="41272619980323123"/>
+            </map>
+        </property>
+        <!--        Set-->
+        <property name="games">
+            <set>
+                <value>MonsterHunter:World</value>
+                <value>GrandTheftAutoV</value>
+                <value>Don'tStarve</value>
+                <value>Horizon4</value>
+                <value>CS:GO</value>
+                <value>ItTakesTwo</value>
+                <value>ResidentEvil2</value>
+                <value>LOL</value>
+            </set>
+        </property>
+        <!--        空字符串-->
+        <!--        <property name="wife" value=""/>-->
+        <!--        null        -->
+        <property name="wife">
+            <null/>
+        </property>
+
+        <!--        Property-->
+        <property name="info">
+            <props>
+                <prop key="工号">078011</prop>
+                <prop key="性别">男</prop>
+                <prop key="姓名">zhw</prop>
+                <prop key="username">lsgf</prop>
+                <prop key="password">123</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="address" class="com.lsgf.pojo.Address">
+        <property name="address" value="长沙市开福区"/>
+    </bean>
+
+
+</beans>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace = 绑定一个对应的Dao/Mapper接口 -->
+<mapper namespace="com.lsgf.dao.UserDao">
+    <select id="getUserList" resultType="com.lsgf.pojo.User">
+        select *
+        from testdb.dept
+    </select>
+
+    <select id="getUserById" parameterType="int" resultType="com.lsgf.pojo.User">
+        select *
+        from testdb.dept
+        where id = #{id}
+    </select>
+
+
+    <select id="getUserById2" parameterType="map" resultType="com.lsgf.pojo.User">
+        select *
+        from testdb.dept
+        where id = #{userid}
+    </select>
+
+    <!-- 对象中的属性 可以直接取出来 -->
+    <insert id="addUser" parameterType="com.lsgf.pojo.User">
+        insert into testdb.dept (id,dname,loc) value (#{id},#{dname},#{loc});
+    </insert>
+
+    <!-- 对象中的属性 可以直接取出来 -->
+    <insert id="addUser2" parameterType="map" >
+        insert into testdb.dept (id,loc) value (#{userid},#{userloc});
+    </insert>
+
+
+
+    <update id="updateUser" parameterType="com.lsgf.pojo.User">
+        update  testdb.dept set dname = #{dname},loc =#{loc}  where id = #{id};
+    </update>
+
+    <delete id="deleteUser" parameterType="int">
+        delete from testdb.dept where id = #{id}
+    </delete>
+
+    <select id="getUserLike" resultType="com.lsgf.pojo.User">
+        select *
+        from testdb.dept
+        where loc like "%"#{value}"%"
+    </select>
+
+<!--    sql注入错误示范-->
+    <select id="getUserLikesqlzhuru" resultType="com.lsgf.pojo.User">
+        select *
+        from testdb.dept
+        where loc like #{value}
+    </select>
+
+
+
+
+
+</mapper>

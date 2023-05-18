@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--    使用Spring来创建对象  默认无参-->
+    <!--    <bean id="user" class="com.lsgf.pojo.User">-->
+    <!--        &lt;!&ndash;        collaborators and configuration for this bean go here&ndash;&gt;-->
+    <!--        <property name="name" value="zhw"/>-->
+    <!--    </bean>-->
+
+    <!--    有参构造函数-->
+    <!--    1.下标赋值-->
+    <!--    <bean id="user" class="com.lsgf.pojo.User">-->
+    <!--        <constructor-arg index="0" value="zhw"/>-->
+    <!--    </bean>-->
+
+    <!--    2.通过类型创建  不建议使用 （如两个都是String的情况 -->
+    <!--    <bean id="user" class="com.lsgf.pojo.User">-->
+    <!--        <constructor-arg type="java.lang.String" value="zhw"/>-->
+    <!--    </bean>-->
+
+    <!--    3.直接通过参数名来设置-->
+    <bean id="user" class="com.lsgf.pojo.User">
+        <constructor-arg name="name" value="zhw"/>
+    </bean>
+
+    <alias name="userT" alias="aliasUser"/>
+
+    <!--
+    id:bean的唯一标识
+    class:bean对象所对应的全限定名：包名+类型
+    name:也是别名,而且name可以同事取多个别名
+    import:一般用于团队开发使用，他可以将多个配置文件，导入合并为一个
+    -->
+    <bean id="userT" class="com.lsgf.pojo.UserT" name="userT2,u2 u3;u4">
+    </bean>
+
+</beans>

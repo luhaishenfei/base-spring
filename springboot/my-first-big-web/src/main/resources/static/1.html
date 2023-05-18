@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body>
+<div id="d1">
+    <p id="p1">我是第一个P元素</p>
+    <p id="p2">我是第二个P元素</p>
+    <p id="p3">我是第三个P元素</p>
+</div>
+
+<div id="d2">
+    <h3>标题一</h3>
+    <p>我是一个段落</p>
+</div>
+
+<select id="sel">
+</select>
+
+<script>
+    var d1=document.getElementById("d1");
+    var d2=document.getElementById("d2");
+    var p1=document.getElementById("p1");
+    var p2=document.getElementById("p2");
+    var p3=document.getElementById("p3");
+    var sel=document.getElementById("sel");
+    //1.创建一个空元素
+    var a=document.createElement("a");
+    //设置关键属性和内容
+    a.href="http://www.baidu.com";
+    a.innerHTML="百度一下";
+    console.log(a);
+    //2.将元素添加到DOM树的指定父元素下
+    d1.appendChild(a);//在末尾追加
+    // d1.insertBefore(a,p2);//将a插入到p2之前
+    // d1.replaceChild(a,p1);//用a替换p1元素
+
+    //删除一个子元素
+    d1.removeChild(p3);//删除d1下的p3元素
+
+    //练习1：
+    //在P1之前添加一个h1标记
+    //1.创建空元素
+    var h1=document.createElement("h1");
+    h1.innerHTML="我是新添加的标题";
+    //2.将元素添加到DOM树
+    d1.insertBefore(h1,p1);
+
+    //练习2：
+    //在d2的末尾，添加一个列表ul
+    var ul=document.createElement("ul");
+    d2.appendChild(ul);
+    //再在ul中添加两个li，内容分别为“北京”和“上海”
+    for(var i=0;i<2;i++){
+        var li=document.createElement("li");
+        li.innerHTML=i==0?"北京":"上海";
+        ul.appendChild(li);
+    }
+
+    //练习3：
+    var city=["北京","上海","天津","重庆","深圳","武汉"];
+    //在select中添加option，内容分别为city数组中的城市
+    for(var i=0;i<city.length;i++){
+        var option=document.createElement("option");
+        option.innerHTML=city[i];
+        option.value=city[i];
+        sel.appendChild(option);
+    }
+
+
+
+</script>

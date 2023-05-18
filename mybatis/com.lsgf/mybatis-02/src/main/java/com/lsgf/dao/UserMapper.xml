@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace = 绑定一个对应的Dao/Mapper接口 -->
+<mapper namespace="com.lsgf.dao.UserDao">
+<!--    resultType使用别名来获取-->
+    <select id="getUserList" resultType="User">
+        select *
+        from testdb.dept
+    </select>
+
+    <!--    resultType使用package默认类名首字母小写（没有注解） 来获取-->
+    <select id="getUserById" parameterType="int" resultType="user">
+        select *
+        from testdb.dept
+        where id = #{id}
+    </select>
+
+    <!--    resultType使用package中的JavaBean有注解的情况 来获取-->
+    <insert id="addUser" parameterType="aliasUser">
+        insert into testdb.dept (id,dname,loc) value (#{id},#{dname},#{loc});
+    </insert>
+
+    <update id="updateUser" parameterType="com.lsgf.pojo.User">
+        update  testdb.dept set dname = #{dname},loc =#{loc}  where id = #{id};
+    </update>
+
+    <delete id="deleteUser" parameterType="int">
+        delete from testdb.dept where id = #{id}
+    </delete>
+
+</mapper>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!-- 新 Bootstrap5 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/css/bootstrap.min.css">
+    <!--  popper.min.js 用于弹窗、提示、下拉菜单 -->
+    <script src="https://cdn.staticfile.org/popper.js/2.9.3/umd/popper.min.js"></script>
+    <!-- 最新的 Bootstrap5 核心 JavaScript 文件 -->
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/js/bootstrap.min.js"></script>
+
+
+</head>
+<style>
+    h1 {
+        color: gray;
+    }
+</style>
+<body>
+<h1>平面系统微信扫码后台</h1>
+<hr>
+
+<div>
+    <button type="button" class="btn btn-success">查看</button>
+    <a href="/test">toTestPage</a>
+    <a href="/toBilibili">toBilibili</a>
+
+</div>
+
+<button onclick="toBilibili()">去B站</button>
+
+<form class="form-auth-small" method="post" action="queryByWord">
+    <div class="form-group">
+        <label class="control-label sr-only">工号</label>
+        <input type="text" class="form-control" id="employeeNum" name="employeeNum" value="" placeholder="工号">
+    </div>
+    <button type="submit" class="btn btn-primary btn-lg btn-block">注册</button>
+</form>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<div id="app">
+    <h1>UserList</h1>
+    <div v-for="words in info">{{ words.tableField }}</div>
+</div>
+<input type="hidden" id='cache' runat=server/>
+<script>
+    function toBilibili() {
+        window.location.href="https://www.bilibili.com"
+    }
+
+
+    v = new Vue({
+        el: '#app',
+        data() {
+            return {
+                info: null
+            }
+        },
+        mounted() {
+            axios
+                .get('http://localhost:8080/queryCt4WordList')
+                .then(response => (this.info = response.data))
+                .catch(function (error) { // 请求失败处理
+                    console.log(error);
+                });
+        }
+    })
+</script>
+</body>
+</html>

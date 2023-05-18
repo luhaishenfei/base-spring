@@ -1,0 +1,34 @@
+debug: true
+server:
+  port: 8085
+spring:
+  profiles:
+    active: dev
+---
+server:
+  port: 8086
+spring:
+  profiles: dev
+
+---
+server:
+  port: 8087
+spring:
+  profiles: test
+
+
+
+person:
+  last-name: zhw
+  name: lsgf
+  age: 23
+  happy: true
+  birth: 2022/01/28
+  maps: {k1: v1,k2: v2}
+  lists:
+    - code
+    - music
+    - girlfriend
+  dog:
+    name: 来福
+    age: 5

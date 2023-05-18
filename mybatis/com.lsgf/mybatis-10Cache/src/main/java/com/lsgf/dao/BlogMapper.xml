@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lsgf.dao.BlogMapper">
+<!-- 添加cache标签即在当前Mapper.xml中开启了二级缓存  记得要先开启全局缓存虽然是默认开启的 mybatis-config.xml  -->
+<cache type="org.mybatis.caches.ehcache.EhcacheCache"/>
+<!--    <cache-->
+<!--    创建FIFO缓存 默认清除策略是LRU -->
+<!--        eviction="FIFO"-->
+<!--    每隔60秒刷新-->
+<!--        flushInterval="60000"-->
+<!--    最多可以存储结果对象或列表的512个引用-->
+<!--        size="512"-->
+<!--    返回的对象被认为是只读的，因此对他们进行修改可能会在不同线程中的调用者产生冲突-->
+<!--        readOnly="true"/>-->
+
+    <select id="getBlogByID" parameterType="int" resultType="blog" useCache="true">
+        select *
+        from blog where id =#{id};
+    </select>
+
+    <insert id="addBlog" parameterType="blog">
+        insert into blog (id, title, author, create_time, views)
+        values (#{id}, #{title}, #{author}, #{createTime}, #{views});
+    </insert>
+
+    <select id="queryBlogIF" parameterType="map" resultType="blog">
+        select * from blog where 1=1
+        <if test="title !=null">
+            and title = #{title}
+        </if>
+        <if test="author !=null">
+            and author = #{author}
+        </if>
+    </select>
+
+    <select id="queryBlogChoose" parameterType="map" resultType="blog">
+        select * from blog
+        <where>
+            <if test="title !=null">
+                title = #{title}
+            </if>
+            <if test="author !=null">
+                and author = #{author}
+            </if>
+        </where>
+    </select>
+
+    <select id="queryBlogChooseWhen" parameterType="map" resultType="blog">
+        select * from blog
+        <where>
+            <choose>
+                <when test="title !=null">
+                    title = #{title}
+                </when>
+                <when test="author !=null">
+                    and author = #{author}
+                </when>
+                <otherwise>
+                    and views = #{views}
+                </otherwise>
+            </choose>
+        </where>
+    </select>
+
+
+    <update id="updateBlogSet" parameterType="map">
+        update blog
+        <set>
+            <if test="title != null">
+                title = #{title},
+            </if>
+            <if test="author != null">
+                author = #{author},
+            </if>
+            <if test="views != null">
+                views = #{views},
+            </if>
+        </set>
+        where title = #{targetTitle}
+    </update>
+
+
+    <!--    如果where/set元素没有按照套路出牌，我们可以通过自定义trim元素来定制where元素的功能-->
+    <select id="queryBlogTrim" parameterType="map" resultType="blog">
+        select * from blog
+        <trim prefix="WHERE" prefixOverrides="AND|OR">
+            <if test="title !=null">
+                title = #{title}
+            </if>
+            <if test="author !=null">
+                and author = #{author}
+            </if>
+
+        </trim>
+        <!--        <trim prefix="SET" suffixOverrides=",">-->
+
+
+        <!--        </trim>-->
+
+    </select>
+
+
+    <sql id="if-title-author">
+        <if test="title !=null">
+            title = #{title}
+        </if>
+        <if test="author !=null">
+            and author = #{author}
+        </if>
+    </sql>
+    <select id="queryBlogSql" parameterType="map" resultType="blog">
+        select * from blog
+        <where>
+            <include refid="if-title-author"></include>
+        </where>
+    </select>
+
+
+<!--    我们现在传递一个万能的map，这个map可以存在一个集合-->
+    <select id="queryBlogForeach" parameterType="map" resultType="blog">
+        select * from blog
+        <where>
+            <foreach  item="id" collection="ids"
+                     open="" separator=" OR" close="">
+                id =   #{id}
+            </foreach>
+        </where>
+    </select>
+
+
+</mapper>

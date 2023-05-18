@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+
+   var str="||||";
+
+
+
+   arr = str.split('|');
+   console.log(arr)
+   supId="";
+   for(k=0;k<arr.length;k++){
+       if (supId==""){
+           supId=arr[k];
+       }
+   }
+    if (supId==""){
+        supId="-1"
+    }
+</script>
+</body>
+</html>

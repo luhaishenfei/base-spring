@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace = 绑定一个对应的Dao/Mapper接口 -->
+<mapper namespace="com.lsgf.dao.UserDao">
+    <select id="getUserList" resultType="User">
+    <!-- 类型处理暴力解决 -->
+        select id,dname,loc as location
+        from testdb.dept
+    </select>
+
+   <!--    resultMap 结果集映射-->
+    <resultMap id="UserMap" type="User">
+
+        <id property="id" column="id"/>
+
+        <!--        column数据库中的字段  property实体类中的属性-->
+<!--        id,dname与数据库相同，所以可以不用配置-->
+        <!--        <result column="id" property="id"/>-->
+<!--        <result column="dname" property="dname"/>-->
+<!--        ！！-->
+        <result column="loc" property="location"/>
+
+    </resultMap>
+    <select id="getUserById" parameterType="int" resultMap="UserMap">
+        select *
+        from testdb.dept
+        where id = #{id}
+    </select>
+
+    <insert id="addUser" parameterType="aliasUser">
+        insert into testdb.dept (id,dname,loc) value (#{id},#{dname},#{loc});
+    </insert>
+
+    <update id="updateUser" parameterType="com.lsgf.pojo.User">
+        update  testdb.dept set dname = #{dname},loc =#{loc}  where id = #{id};
+    </update>
+
+    <delete id="deleteUser" parameterType="int">
+        delete from testdb.dept where id = #{id}
+    </delete>
+
+</mapper>

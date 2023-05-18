@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    function toList(str) {
+        if (str != null) {
+            if (str.lastIndexOf(',') == str.length - 1) {
+                str = str.slice(0, str.length - 1).split(',');
+            } else {
+                str = str.split(',');
+            }
+            return str;
+        } else {
+            return null;
+        }
+
+    }
+    var storeList= Forguncy.Page.getCell("storeIDs").getValue();
+    var planeCateList= Forguncy.Page.getCell("planeCateIDs").getValue();
+    storeList=toList(storeList);
+    planeCateList=toList(planeCateList);
+    console.log(storeList)
+    console.log(planeCateList)
+
+    Forguncy.CommandHelper.setVariableValue("storeIDList", storeList)
+    Forguncy.CommandHelper.setVariableValue("planeCateIDList", planeCateList)
+
+    var titleObj=document.getElementsByClassName("FUI-dialog-header-title");
+    titleObj[0].innerHTML="nihao"
+</script>
+
+</body>
+</html>
