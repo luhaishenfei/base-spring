@@ -19,7 +19,9 @@ public class DemoController {
 
     @RequestMapping("greet")
     public String sayHello(@RequestParam String name){
+
         return restTemplate.getForObject("http://EUREKA-PRODUCER/sayHello?param=" + name, String.class);
+
     }
 
 }
