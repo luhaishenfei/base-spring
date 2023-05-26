@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="LeetcodeEditor">
+    <option name="projectConfig">
+      <map>
+        <entry key="E:/leetcodeTempDir/leetcode/editor/cn/[1]两数之和.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="E:/leetcodeTempDir/leetcode/editor/cn/doc/content/[1]两数之和.md" />
+              <option name="path" value="E:/leetcodeTempDir/leetcode/editor/cn/[1]两数之和.java" />
+              <option name="questionId" value="1" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="E:/leetcodeTempDir/leetcode/editor/cn/[825]适龄的朋友.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="E:/leetcodeTempDir/leetcode/editor/cn/doc/content/[825]适龄的朋友.md" />
+              <option name="path" value="E:/leetcodeTempDir/leetcode/editor/cn/[825]适龄的朋友.java" />
+              <option name="questionId" value="852" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
