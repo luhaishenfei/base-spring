@@ -1,10 +1,9 @@
 # ?????? (???)
 server:
-  port: 8601
+  port: 8603
 eureka:
   instance:
-    #需要给电脑配置对应的多个hostname，此项目是配了127.0.0.1 eureka-server、1、2
-    hostname: eureka-server
+    hostname: eureka-server2
     #???? default is 30
     leaseRenewalIntervalInSeconds: 30
   client:
@@ -22,7 +21,7 @@ eureka:
     service-url:
       # ???Eureka Server???,??????????????????.???http://localhost:8601/eureka/;???????','??.
       #defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
-      defaultZone: http://eureka-server1:8602/eureka/,http://eureka-server2:8603/eureka/
+      defaultZone: http://eureka-server:8601/eureka/,http://eureka-server1:8602/eureka/
 
     server:
       #???? ????true

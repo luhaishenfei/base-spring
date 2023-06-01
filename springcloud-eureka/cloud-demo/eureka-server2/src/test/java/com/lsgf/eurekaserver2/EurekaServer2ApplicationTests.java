@@ -1,9 +1,10 @@
-package com.lsgf.eurekaproducer;
+package com.lsgf.eurekaserver2;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+
 @SpringBootTest
-class EurekaProducerApplicationTests {
+class EurekaServer2ApplicationTests {
 
     @Test
     void contextLoads() {

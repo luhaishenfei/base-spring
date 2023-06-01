@@ -5,30 +5,26 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.0.6</version>
+        <version>3.0.7</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.lsgf</groupId>
-    <artifactId>eureka-producer</artifactId>
+    <artifactId>eureka-server1</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>eureka-producer</name>
-    <description>eureka-producer</description>
+    <name>eureka-server1</name>
+    <description>eureka-server1</description>
     <properties>
-        <java.version>8</java.version>
-        <!--        eureka -cloud-->
-        <spring-cloud.version>2022.0.2</spring-cloud.version>
+        <java.version>17</java.version>
+        <spring-cloud.version>2022.0.3</spring-cloud.version>
     </properties>
     <dependencies>
-
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-            <version>4.0.1</version>
-        </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
         </dependency>
 
         <dependency>
