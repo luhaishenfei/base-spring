@@ -10,5 +10,5 @@ eureka:
     service-url:
       # ????????
       # 单节点
-#      defaultZone: http://localhost:8601/eureka
+      #defaultZone: http://localhost:8601/eureka
       defaultZone: http://localhost:8601/eureka,http://localhost:8602/eureka/,http://localhost:8603/eureka/

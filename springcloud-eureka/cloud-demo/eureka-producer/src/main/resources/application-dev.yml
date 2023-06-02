@@ -1,5 +1,5 @@
 server:
-  port: 8602
+  port: 8610
 
 spring:
   application:
@@ -9,4 +9,4 @@ eureka:
   client:
     service-url:
       # ????????
-      defaultZone: http://10.0.19.158:8601/eureka
+      defaultZone: http://10.11.93.121:8601/eureka/,http://10.0.19.158:8601/eureka/,http://10.0.19.168:8601/eureka/
